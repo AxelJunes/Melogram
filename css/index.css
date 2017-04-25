@@ -4,14 +4,11 @@ body{
 .navbar-inverse{
   background-color: #292929;
 }
-.carousel{
-  margin-top: 100px;
-  margin-bottom: 50px;
-}
-@media (max-width: 767px) {
-  .carousel{
-    margin-top: 300px;
-  }
+
+
+/*Main container*/
+.main{
+  margin-top: 80px;
 }
 .img-responsive{
   margin:auto;
@@ -21,12 +18,25 @@ body{
 .info{
   text-align: center;
 }
+
+.carousel{
+  padding-top: 60px;
+}
+
+@media (max-width: 767px) {
+  .main{
+    margin-top: 120px;
+  }
+}
+
+/*Footer*/
 .footer{
   margin-top: 50px;
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: #292929;
 }
+
 .footer-list{
   color: #818181;
 }

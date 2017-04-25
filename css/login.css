@@ -1,0 +1,21 @@
+@import "index.css";
+
+/*Main container*/
+.main{
+  margin-top: 200px;
+}
+
+.footer{
+  margin-top: 195px;
+}
+
+.entrar{
+
+}
+
+@media (max-width: 500px) {
+  .login{
+    margin-left: 0;
+    width:100%;
+  }
+}
