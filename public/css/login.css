@@ -6,11 +6,11 @@
 }
 
 .footer{
-  margin-top: 195px;
+  margin-top: 350px;
 }
 
 .entrar{
-
+  width: 100%;
 }
 
 @media (max-width: 500px) {
