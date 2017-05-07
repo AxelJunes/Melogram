@@ -6,6 +6,10 @@
     $db = mysqli_connect('localhost','root','','melogram');
     $usuario = $_POST['username'];
     $password = $_POST['password'];
+
+    //Actualizamos la variable de sesión del usuario
+    $_SESSION['user'] = $usuario;
+
     $checkUser = mysqli_query($db, "SELECT Nombre FROM usuarios WHERE Nombre = '$usuario'");
     //Comprobamos si el usuario está en la base de datos
     if(mysqli_num_rows($checkUser) == 0){
@@ -41,18 +45,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicia Sesión</title>
+    <title>Inicio de Sesión</title>
     <link rel="shortcut icon" type="image/png" href="img/icons/favicon.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
   </head>
   <body>
     <!-- Header -->
-    <div class="container-fluid">
+    <div class="container">
       <nav class="navbar navbar-inverse navbar-fixed-top">
        <div class="container-fluid">
          <div class="navbar-header">
-           <h3>MELOGRAM</h3>
+           <img id="logo" src="img/logos/melogram.png">
          </div>
        </div>
      </nav>
@@ -63,12 +67,12 @@
         <form action="login.php" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario" required="required">
+            <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required="required">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required="required">
+            <input type="password" class="form-control" name="password" placeholder="Contraseña" required="required">
           </div>
           <br>
           <button type="submit" class="btn btn-primary btn-lg entrar" name="submit">Entrar</button>

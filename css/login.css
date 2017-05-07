@@ -6,13 +6,16 @@
 }
 
 .footer{
-  margin-top: 350px;
+  margin-top: 330px;
 }
 
 .login{
   opacity: 0.9;
 }
 
+.genero{
+  height: 40px;
+}
 .entrar{
   width: 100%;
 }
