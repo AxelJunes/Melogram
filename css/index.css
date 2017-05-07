@@ -1,26 +1,20 @@
 body{
-  background-color: white;
+  background-image:url('../img/backgrounds/bg.png');
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position:center;
 }
 .navbar-inverse{
   background-color: #292929;
 }
 
+h3{
+  color: #FFFFFF;
+}
 
 /*Main container*/
 .main{
   margin-top: 80px;
-}
-.img-responsive{
-  margin:auto;
-  height: 200px;
-  width: 200px;
-}
-.info{
-  text-align: center;
-}
-
-.carousel{
-  padding-top: 60px;
 }
 
 @media (max-width: 767px) {
