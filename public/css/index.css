@@ -4,8 +4,8 @@ body{
   background-size: cover;
   background-position:center;
 }
-.navbar-inverse{
-  background-color: #292929;
+.navigation-menu{
+  background-color: #202020;
 }
 
 h3{
@@ -28,7 +28,7 @@ h3{
   margin-top: 50px;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #292929;
+  background-color: #202020;
 }
 
 .footer-list{
