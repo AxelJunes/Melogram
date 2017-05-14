@@ -22,11 +22,7 @@
           require_once 'app/views/'.$view.$entity.'.php';
       }
 
-      public function login(){
-          require_once 'app/views/login.php';
-      }
-
-      public function redirect($controller=DEFAULT_CONTROLLER,$action=DEFAULT_ACTION){
+      public function redirect($controller=DEFAULT_CONTROLLER, $action=DEFAULT_ACTION){
           header("Location:index.php?controller=".$controller."&action=".$action);
       }
 

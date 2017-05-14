@@ -1,10 +1,21 @@
 body{
   background-image:url('../img/backgrounds/bg.png');
-  background-repeat:no-repeat;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position:center;
+  background-position: center;
 }
+
+.top-right-logo{
+  margin: 10px;
+  color: #FFFFFF;
+}
+
 .navigation-menu{
+  padding: 15px;
+  background-color: #202020;
+}
+.navbar-right ul li:hover{
   background-color: #202020;
 }
 
@@ -25,7 +36,8 @@ h3{
 
 /*Footer*/
 .footer{
-  margin-top: 50px;
+  position: fixed;
+  width: 100%;
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: #202020;

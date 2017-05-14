@@ -32,7 +32,6 @@
       }
 
       public function getById($id){
-          $id = intval($id);
           $req = $this->db()->prepare("SELECT * FROM $this->table  WHERE id = :id");
           $req->execute(array('id' => $id));
           $result = $req->fetchAll(PDO::FETCH_CLASS, $this->class);

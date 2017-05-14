@@ -8,7 +8,6 @@
 class User extends EntityBase {
 
     private $id;
-    private $name;
     private $password;
     private $age;
     private $music;
@@ -25,8 +24,8 @@ class User extends EntityBase {
     public function create() {
         $key = "";
         try {
-            if ($insert = $this->db()->prepare("INSERT INTO usuarios (id, name, password, age, music) VALUES (?, ?, ?, ?, ?)")) {
-                $insert->bind_param('sssss', $this->id, $this->name, $this->password, $this->age, $this->music);
+            if ($insert = $this->db()->prepare("INSERT INTO usuarios (id, password, age, music) VALUES (?, ?, ?, ?)")) {
+                $insert->bind_param('sssss', $this->id, $this->password, $this->age, $this->music);
                 if (!$insert->execute()) {
                     $key = "901"; //Error code: "El registro no se ha podido crear correctamente"
                 } else {
@@ -39,6 +38,24 @@ class User extends EntityBase {
             header('Location: ../error.php?err=' . $e->getMessage() . "\n");
         }
         return $key;
+    }
+
+    /**
+    * Checks if the user exists in the database
+    */
+    public function exists(){
+      //Check if query returns anything
+      if(count($this->getById($this->getId())) > 0){
+        return True;
+      }
+      return False;
+    }
+
+    /**
+    * Gets password given by id
+    */
+    public function getPassById($id){
+      return $this->getById($id)->getPassword();
     }
 
     //Getter and setter methods
@@ -55,20 +72,6 @@ class User extends EntityBase {
     */
     public function setId($id){
         $this->id = $id;
-    }
-
-    /**
-    * Get username
-    */
-    public function getName(){
-        return $this->name;
-    }
-
-    /**
-    * Set username
-    */
-    public function setNombre($name){
-        $this->name = $name;
     }
 
     /**

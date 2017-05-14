@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer navbar navbar-inverse">
   <div class="container">
     <ul>
       <li class="footer-list" href="#">Contacto</li>

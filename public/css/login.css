@@ -1,13 +1,12 @@
+@import "index.css";
+
 /*Main container*/
 .main{
   margin-top: 200px;
 }
 
-.footer{
-  margin-top: 330px;
-}
-
 .login{
+  margin-top: 100px;
   opacity: 0.9;
 }
 
@@ -21,6 +20,11 @@
 .link{
   text-align: right;
 }
+
+.footer{
+  margin-top: 250px;
+}
+
 @media (max-width: 500px) {
   .login{
     margin-left: 0;

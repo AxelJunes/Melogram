@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <?php require_once('layout/library.php'); ?>
+    <link rel="stylesheet" href="public/css/error.css">
     <title>Login</title>
 </head>
   <body>
     <div class="container">
-      <h1>Ooops, couldn't find the page...</h1>
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Lo sentimos, pero esta página no existe...</h1>
+          <br>
+          <img class="img-responsive img-error" src="public/img/resources/404.gif">
+        </div>
+      </div>
     </div>
     <!-- Javascript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <?php require_once('layout/scripts.php'); ?>
   </body>
 </html>

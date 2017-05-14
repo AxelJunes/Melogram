@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <?php require_once('layout/library.php'); ?>
     <link rel="stylesheet" href="public/css/signUp.css">
     <title>Sign Up</title>
 </head>
   <body>
+    <!-- Header -->
+    <?php require_once('layout/header.php'); ?>
     <div class="container">
-      <!-- Header -->
-      <?php require_once('layout/header.php'); ?>
       <!-- Content -->
       <div class="jumbotron col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 login">
         <form action="signUp.php" method="POST">
@@ -24,7 +24,8 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-music"></span></span>
-            <input type="text" class="form-control" name="music" placeholder="Música favorita" required="required">
+            <!-- Dropdown menu with music genres -->
+            <?php require_once 'dropdownGenres.php'; ?>
           </div>
           <br>
           <div class="input-group">
@@ -39,14 +40,13 @@
           <br>
           <button type="submit" class="btn btn-primary btn-lg entrar">Crear cuenta</button>
           <br><br>
-          <div class="link">Ya tienes cuenta?<a href="<?php echo $helper->url('view','login'); ?>">Inicia Sesión!</a></div>
+          <div class="link">Ya tienes cuenta?<a href="<?php echo $helper->url('view','login'); ?>"> Inicia Sesión!</a></div>
         </form>
       </div>
-      <!-- Footer -->
-      <?php require_once('layout/footer.php'); ?>
     </div>
+    <!-- Footer -->
+    <?php require_once('layout/footer.php'); ?>
     <!-- Javascript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <?php require_once('layout/scripts.php'); ?>
   </body>
 </html>
