@@ -1,133 +1,154 @@
 <?php
+  require_once('Message.php');
 
-/**
- * Class User
- * @
- */
+  /**
+   * Class User
+   * @
+   */
+  class User extends EntityBase {
+      private $id;
+      private $password;
+      private $age;
+      private $music;
 
-class User extends EntityBase {
-
-    private $id;
-    private $password;
-    private $age;
-    private $music;
-
-    public function __construct() {
-        $this->table = "users";
-        $class = "User";
-        parent::__construct($this->table, $class);
-    }
-
-    /**
-     * Create user
-     */
-    public function create() {
-        $key = "";
-        try {
-            if ($insert = $this->db()->prepare("INSERT INTO usuarios (id, password, age, music) VALUES (?, ?, ?, ?)")) {
-                $insert->bind_param('sssss', $this->id, $this->password, $this->age, $this->music);
-                if (!$insert->execute()) {
-                    $key = "901"; //Error code: "El registro no se ha podido crear correctamente"
-                } else {
-                    $key = "100"; //Error code: "Registro creado correctamente"
-                }
-            } else {
-                $key = $this->db()->error; //Error code: "Error directo de base de datos"
-            }
-        } catch (Exception $e) {
-            header('Location: ../error.php?err=' . $e->getMessage() . "\n");
-        }
-        return $key;
-    }
-
-    /**
-    * Checks if the user exists in the database
-    */
-    public function exists(){
-      //Check if query returns anything
-      if(count($this->getById($this->getId())) > 0){
-        return True;
+      public function __construct() {
+          $this->table = "users";
+          $class = "User";
+          parent::__construct($this->table, $class);
       }
-      return False;
-    }
 
-    /**
-    * Gets password given by id
-    */
-    public function getPassById($id){
-      return $this->getById($id)->getPassword();
-    }
+      /**
+       * Create user
+       */
+      public function create() {
+          $insert = $this->db()->prepare("INSERT INTO users (id, password, age, music) VALUES (?, ?, ?, ?)");
+          $insert->bindParam(1, $this->getId(), PDO::PARAM_STR);
+          $insert->bindParam(2, $this->getPassword(), PDO::PARAM_STR);
+          $insert->bindParam(3, $this->getAge(), PDO::PARAM_INT);
+          $insert->bindParam(4, $this->getMusic(), PDO::PARAM_STR);
+          //Execute prepared statement
+          $insert->execute();
+      }
 
-    //Getter and setter methods
+      /**
+       * Gets users that will receive the message when sent to a group
+       */
+      public function getGroupReceivers($age, $music){
+        $req = $this->db()->prepare("SELECT id FROM users WHERE age <= :age AND music = :music");
+        $req->execute(array('age' => $age));
+        $req->execute(array('music' => $music));
+        $result = $req->fetchAll(PDO::FETCH_CLASS, $this->getClass());
+        return $result;
+      }
 
-    /**
-    * Get id
-    */
-    public function getId(){
-        return $this->id;
-    }
+      /**
+      * Gets users that can receive a message by this user.
+      * All registered users except admin and the sender itself.
+      */
+      public function getMessageReceivers($id){
+        $query=$this->db()->query("SELECT * FROM $this->table  WHERE id <> 'admin' AND id <> :id");
+        $req->execute(array('id' => $id));
+        $resultSet = $query->fetchAll(PDO::FETCH_CLASS, $this->getClass());
+        return $resultSet;
+      }
+      /**
+      * Get messages sent by the user
+      */
+      public function getSentMessages($id){
+        $req = $this->db()->prepare("SELECT * FROM messages WHERE sender = :id");
+        $req->execute(array('id' => $id));
+        $result = $req->fetchAll(PDO::FETCH_CLASS, "Message");
+        return $result;
+      }
 
-    /**
-    * Set id
-    */
-    public function setId($id){
-        $this->id = $id;
-    }
+      /**
+      * Get messages sent by the user
+      */
+      public function getReceivedMessages($id){
+        $req = $this->db()->prepare("SELECT * FROM messages WHERE receiver = :id");
+        $req->execute(array('id' => $id));
+        //Fetch messages as Message() objects
+        $result = $req->fetchAll(PDO::FETCH_CLASS, "Message");
+        return $result;
+      }
 
-    /**
-    * Get password
-    */
-    public function getPassword(){
-        return $this->password;
-    }
+      /**
+      * Gets password given by id
+      */
+      public function getPassById($id){
+        return $this->getById($id)->getPassword();
+      }
 
-    /**
-    * Set password
-    */
-    public function setPassword($password){
-        $this->password = $password;
-    }
+      //Getter and setter methods
 
-    /**
-    * Get age
-    */
-    public function getAge(){
-        return $this->age;
-    }
+      /**
+      * Get id
+      */
+      public function getId(){
+          return $this->id;
+      }
 
-    /**
-    * Set age
-    */
-    public function setAge($age){
-        $this->age = $age;
-    }
+      /**
+      * Set id
+      */
+      public function setId($id){
+          $this->id = $id;
+      }
 
-    /**
-    * Get music preference
-    */
-    public function getMusic(){
-        return $this->music;
-    }
+      /**
+      * Get password
+      */
+      public function getPassword(){
+          return $this->password;
+      }
 
-    /**
-    * Set music preference
-    */
-    public function setMusica($music){
-        $this->music = $music;
-    }
+      /**
+      * Set password
+      */
+      public function setPassword($password){
+          $this->password = $password;
+      }
 
-    /**
-    * Get db table
-    */
-    public function getTable(){
-        return $this->table;
-    }
+      /**
+      * Get age
+      */
+      public function getAge(){
+          return $this->age;
+      }
 
-    /**
-    * Set db table
-    */
-    function setTable($table){
-        $this->table = $table;
-    }
-}
+      /**
+      * Set age
+      */
+      public function setAge($age){
+          $this->age = $age;
+      }
+
+      /**
+      * Get music preference
+      */
+      public function getMusic(){
+          return $this->music;
+      }
+
+      /**
+      * Set music preference
+      */
+      public function setMusic($music){
+          $this->music = $music;
+      }
+
+      /**
+      * Get db table
+      */
+      public function getTable(){
+          return $this->table;
+      }
+
+      /**
+      * Set db table
+      */
+      function setTable($table){
+          $this->table = $table;
+      }
+  }
 ?>

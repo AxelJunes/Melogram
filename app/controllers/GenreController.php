@@ -1,5 +1,4 @@
 <?php
-
   class GenreController extends BaseController{
 
       private $genre;
@@ -16,10 +15,9 @@
       public function index() {
           // Store genre in array
           $genres = $this->genre->getAll();
-          $this->view("signup", "", array(
+          $this->view("index", $this->entity, array(
               "genres" => $genres
           ));
       }
   }
-
 ?>

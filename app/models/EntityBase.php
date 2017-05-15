@@ -1,24 +1,24 @@
 <?php
   /**
-  * Clase principal del modelo
+  * Main model class
   */
   class EntityBase{
-
-      /**
-       * @var string
-       */
       private $table;
       private $class;
 
       private $db;
 
       /**
-       * Constructor de la entidad base
+       * Base Model constructor
        */
       public function __construct($table, $class) {
           $this->table=(string) $table;
           $this->class=(string) $class;
           $this->db = DAO::getConn();
+      }
+
+      public function getClass() {
+          return $this->class;
       }
 
       public function db() {
@@ -54,6 +54,17 @@
       public function deleteBy($column,$value){
           $query=$this->db()->query("DELETE FROM $this->table WHERE $column = '$value'");
           return $query;
+      }
+
+      /**
+      * Checks if the entity exists in the database
+      */
+      public function exists(){
+        //Check if query returns anything
+        if(count($this->getById($this->getId())) > 0){
+          return True;
+        }
+        return False;
       }
 
   }

@@ -11,8 +11,10 @@
       //Funcionalidades
 
       public function view($view, $entity, $data){
-          foreach ($data as $id_assoc => $valor) {
-              ${$id_assoc} = $valor;
+          if($data != ""){
+            foreach ($data as $id_assoc => $valor) {
+                ${$id_assoc} = $valor;
+            }
           }
 
           require_once 'app/models/helperView.php';

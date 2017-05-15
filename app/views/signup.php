@@ -7,14 +7,14 @@
 </head>
   <body>
     <!-- Header -->
-    <?php require_once('layout/header.php'); ?>
+    <?php require_once('layout/headerIndex.php'); ?>
     <div class="container">
       <!-- Content -->
       <div class="jumbotron col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 login">
-        <form action="signUp.php" method="POST">
+        <form action="<?php echo $helper->url('user','signup'); ?>" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" class="form-control" name="username" placeholder="Nombre de usuario" required="required">
+            <input type="text" class="form-control" name="id" placeholder="Nombre de usuario" required="required">
           </div>
           <br>
           <div class="input-group">
@@ -24,8 +24,15 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-music"></span></span>
-            <!-- Dropdown menu with music genres -->
-            <?php require_once 'dropdownGenres.php'; ?>
+            <div class="form-group">
+             <select class="form-control" name="music" required>
+               <option disabled selected>Música preferida</option>
+               <!-- Show genres registered in database -->
+               <?php foreach ($genres as $genre) { ?>
+                     <option value="<?php echo $genre->getId(); ?>"><?php echo $genre->getId(); ?></option>
+               <?php } ?>
+             </select>
+           </div>
           </div>
           <br>
           <div class="input-group">

@@ -5,7 +5,7 @@
     <title>Lista de Usuarios</title>
 </head>
 <body>
-  <?php require_once('layout/header.php'); ?>
+  <?php require_once('layout/headerLogged.php'); ?>
   <div class="container">
       <section>
           <!-- Jumbotron -->
@@ -32,6 +32,5 @@
   </div>
   <!-- Site footer -->
   <?php require_once('layout/footer.php'); ?>
-  <script src="/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

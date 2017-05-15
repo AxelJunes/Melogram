@@ -1,8 +1,7 @@
 <?php
-
   /**
   * Data Acces Object class
-  * Gets information from the database
+  * Connects with the database
   */
   class DAO {
       /**
@@ -22,8 +21,7 @@
       }
 
       /**
-      * Método que conecta con la base de datos. He elegido realizar la conexión mediante un PDO (Objeto de Datos de PHP),
-      * ya que permite la conexión con varios drivers distintos
+      * Method that connects with database
       */
       public static function getConn() {
           if (!isset(self::$connection)) {
@@ -34,5 +32,4 @@
           return self::$connection;
       }
   }
-
 ?>

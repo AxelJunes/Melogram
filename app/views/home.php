@@ -6,12 +6,12 @@
   </head>
 
   <body>
-    <?php require_once('layout/header.php'); ?>
+    <?php require_once('layout/headerIndex.php'); ?>
     <div class="container">
         <section>
             <div class="jumbotron">
                 <div class="page-header">
-                  <h1>Bienvenido a Melogram!!</h1>
+                  <h1>Bienvenido a melogram!!</h1>
                 </div>
                 <p>
                   Melogram es una red social para "melómanos".
@@ -23,8 +23,6 @@
                   También puedes pertenecer a grupos con gente a la que le guste la misma música que a ti.
                 </p>
                 <h2> Así que a qué estas esperando, regístrate!!</h2>
-                <br>
-                <img class="img-responsive" src="public/img/resources/techno.gif">
             </div><!-- Jumbotron -->
         </section>
     </div>

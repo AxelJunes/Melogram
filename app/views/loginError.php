@@ -7,10 +7,13 @@
 </head>
   <body>
     <!-- Header -->
-    <?php require_once('layout/headerIndex.php'); ?>
+    <?php require_once('layout/header.php'); ?>
     <div class="container">
       <!-- Content -->
       <div class="jumbotron col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 login">
+        <div class="alert alert-danger">
+          <strong>Usuario o contraseña incorrectos!</strong>
+        </div>
         <form action="<?php echo $helper->url('user','login'); ?>" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>

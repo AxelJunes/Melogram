@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container">
-    <?php require_once('layout/header.php'); ?>
+    <?php require_once('layout/headerLogged.php'); ?>
     <section>
     <div class="row">
         <?php foreach ($users as $user) { ?>
