@@ -69,9 +69,10 @@
        * Gets groups that will receive the message
        */
       public function getMessageGroups($id){
+        //Get group id
         $req = $this->db()->prepare("SELECT chat_group FROM members WHERE user = :id");
         $req->execute(array('id' => $id));
-        $result = $req->fetchAll(PDO::FETCH_CLASS, $this->getClass());
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
       }
 

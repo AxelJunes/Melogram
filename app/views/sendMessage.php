@@ -16,11 +16,15 @@
             <span class="input-group-addon">Para</span>
             <div class="form-group">
              <select class="form-control" name="receiver" required>
-               <option>Todos</option>
-               <option>Grupos</option>
+               <option class="alert alert-info">Todos</option>
+               <option class="alert alert-info" disabled>Grupos</option>
+               <!-- Show groups registered in database -->
+               <?php foreach ($groups as $group) { ?>
+                     <option><?php print_r($group["chat_group"]); ?></option>
+               <?php } ?>
                <!-- Show users registered in database -->
                <?php foreach ($users as $user) { ?>
-                     <option value="<?php echo $user->getId(); ?>"><?php echo $user->getId(); ?></option>
+                     <option><?php echo $user->getId(); ?></option>
                <?php } ?>
              </select>
            </div>

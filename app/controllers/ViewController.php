@@ -50,8 +50,7 @@
         //Group model to get all the senders groups
         $group = new Group();
         //Array with all the registered groups
-        $groups = $group->getMessageGroups();
-
+        $groups = $group->getMessageGroups($_GET['id']);
         $this->view("sendMessage", $this->entity, array(
             "users" => $users,
             "groups" => $groups,

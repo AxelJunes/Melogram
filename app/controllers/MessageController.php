@@ -39,24 +39,6 @@
           }
       }
 
-      public function add(){
-        $this->group->setId();
-        //Set attributes
-        $this->group->setGenre($_POST['music']);
-        $this->group->setMinAge($_POST['minAge']);
-        $this->group->setMaxAge($_POST['maxAge']);
-        //Insert into database with given attributes
-        $this->group->create();
-        //Redirect to admin page
-        $this->view("admin", "", "");
-        }
-        else{
-          //User already registered in database
-          echo "Group already exists!";
-        }
-      }
-
-
   }
 
 ?>

@@ -119,7 +119,7 @@
       * Send message to other users
       */
       public function sendMessage(){
-
+        echo $_POST['receiver'];
       }
 
       /**
