@@ -2,6 +2,7 @@
 <html>
   <head>
     <?php require_once('layout/library.php'); ?>
+    <link rel="stylesheet" href="public/css/message.css">
     <title>Redactar Mensaje</title>
   </head>
   <body>
@@ -27,12 +28,12 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon">Asunto</span>
-            <input type="text" class="form-control" name="Asunto" required="required">
+            <input type="text" class="form-control" name="Asunto" required>
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon">Mensaje</span>
-            <input type="text" class="form-control" name="Mensaje" required="required">
+            <textarea class="form-control message-text" name="Mensaje" required></textarea>
           </div>
           <br>
           <button type="submit" class="btn btn-primary btn-lg" name="submit">Enviar</button>

@@ -31,7 +31,9 @@
           </tbody>
         </table>
         <br>
-        <a class="btn btn-primary col-lg-2" href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $user->getId(); ?>" role="button">Volver</a>
+        <?php foreach ($users as $user) { ?>
+          <a class="btn btn-primary col-lg-2" href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $user->getId(); ?>" role="button">Volver</a>
+        <?php } ?>
         <br>
       </div><!-- Jumbotron -->
     </div><!-- Container -->

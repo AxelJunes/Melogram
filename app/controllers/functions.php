@@ -1,10 +1,10 @@
 <?php
   function loadController($controller){
-      $controlador = lcfirst($controller).'Controller';
-      $strFileController = 'app/controllers/'.$controlador.'.php';
+      $controlador = ucfirst($controller).'Controller';
+      $strFileController = BASE_PATH . '/app/controllers/'.$controlador.'.php';
 
       if(!is_file($strFileController)){
-          $strFileController='app/controllers/'.lcfirst(DEFAULT_CONTROLLER).'Controller.php';
+          $strFileController= BASE_PATH . '/app/controllers/'.ucfirst(DEFAULT_CONTROLLER).'Controller.php';
       }
 
       require_once $strFileController;

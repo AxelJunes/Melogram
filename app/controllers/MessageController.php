@@ -7,7 +7,7 @@
 
       public function __construct() {
           parent::__construct();
-          require_once('app/models/Message.php');
+          require_once(BASE_PATH . '/app/models/Message.php');
 
           $this->message = new Message();
           $this->entity = "Messages";

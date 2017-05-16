@@ -1,6 +1,6 @@
 <?php
-  require_once('app/models/EntityBase.php');
-  require_once('app/models/Genre.php');
+  require_once(BASE_PATH . '/app/models/EntityBase.php');
+  require_once(BASE_PATH . '/app/models/Genre.php');
 
   class GroupController extends BaseController{
 
@@ -9,14 +9,14 @@
 
       public function __construct() {
           parent::__construct();
-          require_once('app/models/Group.php');
+          require_once(BASE_PATH . '/app/models/Group.php');
 
           $this->group = new Group();
           $this->entity = "Groups";
       }
 
       public function index() {
-          // Store group in array
+          // Store group in arraypredpred
           $groups = $this->group->getAll();
           $this->view("index", $this->entity, array(
               "groups" => $groups
@@ -59,6 +59,13 @@
           $this->group->setMaxAge($_POST['maxAge']);
           //Insert into database with given attributes
           $this->group->create();
+          //Add users that should be members of the group
+          $this->group->addUsersToGroups(
+            $this->group->getId(),
+            $this->group->getGenre(),
+            $this->group->getMinAge(),
+            $this->group->getMaxAge()
+          );
           //Redirect to admin page
           $this->view("admin", "", "");
         }

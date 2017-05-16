@@ -1,5 +1,6 @@
 <?php
   require_once('Message.php');
+  require_once('Group.php');
 
   /**
    * Class User
@@ -22,35 +23,57 @@
        */
       public function create() {
           $insert = $this->db()->prepare("INSERT INTO users (id, password, age, music) VALUES (?, ?, ?, ?)");
-          $insert->bindParam(1, $this->getId(), PDO::PARAM_STR);
-          $insert->bindParam(2, $this->getPassword(), PDO::PARAM_STR);
-          $insert->bindParam(3, $this->getAge(), PDO::PARAM_INT);
-          $insert->bindParam(4, $this->getMusic(), PDO::PARAM_STR);
+          //Variables to insert
+          $id = $this->getId();
+          $password = $this->getPassword();
+          $age = $this->getAge();
+          $music = $this->getMusic();
+
+          $insert->bindParam(1, $id, PDO::PARAM_STR);
+          $insert->bindParam(2, $password, PDO::PARAM_STR);
+          $insert->bindParam(3, $age, PDO::PARAM_INT);
+          $insert->bindParam(4, $music, PDO::PARAM_STR);
           //Execute prepared statement
           $insert->execute();
-      }
-
-      /**
-       * Gets users that will receive the message when sent to a group
-       */
-      public function getGroupReceivers($age, $music){
-        $req = $this->db()->prepare("SELECT id FROM users WHERE age <= :age AND music = :music");
-        $req->execute(array('age' => $age));
-        $req->execute(array('music' => $music));
-        $result = $req->fetchAll(PDO::FETCH_CLASS, $this->getClass());
-        return $result;
       }
 
       /**
       * Gets users that can receive a message by this user.
       * All registered users except admin and the sender itself.
       */
-      public function getMessageReceivers($id){
-        $query=$this->db()->query("SELECT * FROM $this->table  WHERE id <> 'admin' AND id <> :id");
-        $req->execute(array('id' => $id));
+      public function getMessageReceivers(){
+        $query=$this->db()->query("SELECT * FROM $this->table  WHERE id <> 'admin'");
         $resultSet = $query->fetchAll(PDO::FETCH_CLASS, $this->getClass());
         return $resultSet;
       }
+
+      /**
+      * Inserts user into members table
+      */
+      public function addToGroups($id, $age, $music){
+        $groups = $this->getUserGroups($age, $music);
+        $count = sizeof($groups);
+        while($count > 0){
+          $insert = $this->db()->prepare("INSERT INTO members (user, chat_group) VALUES (?, ?)");
+          $group = $groups[sizeof($groups)-$count]->getId();
+          $insert->bindParam(1, $id, PDO::PARAM_STR);
+          $insert->bindParam(2, $group, PDO::PARAM_STR);
+          //Execute prepared statement
+          $insert->execute();
+          $count--;
+        }
+      }
+
+      /**
+      * Gets groups the user should be a member of after signing up
+      */
+      public function getUserGroups($age, $music){
+        $query = $this->db()->prepare("SELECT * FROM groups WHERE genre = :music AND min_age <= :age AND max_age >= :age");
+        $query->execute(array('music' => $music,'age' => $age));
+        $resultSet = $query->fetchAll(PDO::FETCH_CLASS, "Group");
+        return $resultSet;
+      }
+
       /**
       * Get messages sent by the user
       */

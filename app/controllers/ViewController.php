@@ -1,8 +1,8 @@
 <?php
-  require_once('app/models/EntityBase.php');
-  require_once('app/models/Genre.php');
-  require_once('app/models/User.php');
-  require_once('app/models/Group.php');
+  require_once(BASE_PATH . '/app/models/EntityBase.php');
+  require_once(BASE_PATH . '/app/models/Genre.php');
+  require_once(BASE_PATH . '/app/models/User.php');
+  require_once(BASE_PATH . '/app/models/Group.php');
 
   class ViewController extends BaseController {
       private $entity;
@@ -50,7 +50,7 @@
         //Group model to get all the senders groups
         $group = new Group();
         //Array with all the registered groups
-        $groups = $group->getAll();
+        $groups = $group->getMessageGroups();
 
         $this->view("sendMessage", $this->entity, array(
             "users" => $users,

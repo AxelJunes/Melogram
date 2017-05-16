@@ -7,7 +7,7 @@
 
       public function __construct() {
           parent::__construct();
-          require_once('app/models/User.php');
+          require_once(BASE_PATH . '/app/models/User.php');
 
           $this->user = new User();
           $this->entity = "Users";
@@ -97,7 +97,7 @@
             $this->user->setMusic($_POST['music']);
             //Insert into database with given attributes
             $this->user->create();
-            $this->user->addToGroups();
+            $this->user->addToGroups($this->user->getId(), $this->user->getAge(), $this->user->getMusic());
             //Redirect to user profile after inserting into database
             $users = $this->user->getById($this->user->getId());
             $this->view("profile", "", array(

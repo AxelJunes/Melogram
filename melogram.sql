@@ -2,10 +2,10 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2017 a las 00:58:25
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Host: localhost
+-- Generation Time: May 16, 2017 at 05:20 
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `melogram`
+-- Database: `melogram`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `genres`
+-- Table structure for table `genres`
 --
 
 CREATE TABLE `genres` (
@@ -31,7 +31,7 @@ CREATE TABLE `genres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `genres`
+-- Dumping data for table `genres`
 --
 
 INSERT INTO `genres` (`id`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `genres` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `groups`
+-- Table structure for table `groups`
 --
 
 CREATE TABLE `groups` (
@@ -61,10 +61,21 @@ CREATE TABLE `groups` (
   `max_age` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`id`, `genre`, `min_age`, `max_age`) VALUES
+('Los Hijos del Metal', 'Metal', 15, 60),
+('MC\'s', 'HipHop', 20, 30),
+('Metaleros', 'Metal', 21, 36),
+('Tecnazo Maximo', 'Techno', 18, 40),
+('Yeah', 'Metal', 5, 100);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `members`
+-- Table structure for table `members`
 --
 
 CREATE TABLE `members` (
@@ -72,10 +83,21 @@ CREATE TABLE `members` (
   `chat_group` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`user`, `chat_group`) VALUES
+('axel', 'Tecnazo Maximo'),
+('gabri', 'Los Hijos del Metal'),
+('gabri', 'Metaleros'),
+('Eduardo', 'MC\'s'),
+('gabri', 'Yeah');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `messages`
+-- Table structure for table `messages`
 --
 
 CREATE TABLE `messages` (
@@ -90,7 +112,7 @@ CREATE TABLE `messages` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -101,39 +123,42 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `password`, `age`, `music`) VALUES
 ('admin', 'admin', NULL, NULL),
-('axel', 'axel', 22, 'Techno');
+('axel', 'axel', 22, 'Techno'),
+('Eduardo', '1234', 25, 'HipHop'),
+('gabri', 'gabri', 22, 'Metal'),
+('guille', '1234', 30, 'Pop');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `genres`
+-- Indexes for table `genres`
 --
 ALTER TABLE `genres`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `groups`
+-- Indexes for table `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`),
   ADD KEY `genre` (`genre`);
 
 --
--- Indices de la tabla `members`
+-- Indexes for table `members`
 --
 ALTER TABLE `members`
   ADD KEY `user` (`user`),
   ADD KEY `chat_group` (`chat_group`);
 
 --
--- Indices de la tabla `messages`
+-- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
@@ -141,38 +166,38 @@ ALTER TABLE `messages`
   ADD KEY `receiver` (`receiver`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `music` (`music`);
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `groups`
+-- Constraints for table `groups`
 --
 ALTER TABLE `groups`
   ADD CONSTRAINT `groups_ibfk_1` FOREIGN KEY (`genre`) REFERENCES `genres` (`id`);
 
 --
--- Filtros para la tabla `members`
+-- Constraints for table `members`
 --
 ALTER TABLE `members`
-  ADD CONSTRAINT `members_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `members_ibfk_2` FOREIGN KEY (`chat_group`) REFERENCES `groups` (`id`);
+  ADD CONSTRAINT `members_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `members_ibfk_2` FOREIGN KEY (`chat_group`) REFERENCES `groups` (`id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `messages`
+-- Constraints for table `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`receiver`) REFERENCES `users` (`id`);
 
 --
--- Filtros para la tabla `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`music`) REFERENCES `genres` (`id`);

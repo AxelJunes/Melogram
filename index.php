@@ -1,8 +1,11 @@
 <?php
-    require_once('/app/config/global.php');
-    require_once('/app/config/DAO.php');
-    require_once('/app/controllers/functions.php');
-    require_once('/app/controllers/BaseController.php');
+    //Base path for project
+    define("BASE_PATH", realpath(dirname(__FILE__)));
+
+    require_once(BASE_PATH . '/app/config/global.php');
+    require_once(BASE_PATH . '/app/config/DAO.php');
+    require_once(BASE_PATH . '/app/controllers/functions.php');
+    require_once(BASE_PATH . '/app/controllers/BaseController.php');
 
     if(isset($_GET["controller"])){
         $controllerObj = loadController($_GET["controller"]);

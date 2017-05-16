@@ -1,7 +1,7 @@
 <?php
-  //Controlador por defecto
+  //Default controller
   define("DEFAULT_CONTROLLER", "view");
 
-  //Acción por defecto
+  //Default action
   define("DEFAULT_ACTION", "home");
 ?>

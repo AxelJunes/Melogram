@@ -5,7 +5,7 @@
   class BaseController {
 
       function __construct() {
-          require_once ('app/models/entityBase.php');
+          require_once (BASE_PATH . '/app/models/EntityBase.php');
       }
 
       //Funcionalidades
@@ -17,7 +17,7 @@
             }
           }
 
-          require_once 'app/models/helperView.php';
+          require_once 'app/models/HelperView.php';
 
           $helper = new HelperView();
 

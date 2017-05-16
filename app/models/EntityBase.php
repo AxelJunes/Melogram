@@ -26,7 +26,7 @@
       }
 
       public function getAll(){
-          $query=$this->db()->query("SELECT * FROM $this->table  ORDER BY id DESC");
+          $query=$this->db()->query("SELECT * FROM $this->table ORDER BY id DESC");
           $resultSet = $query->fetchAll(PDO::FETCH_CLASS, $this->class);
           return $resultSet;
       }
