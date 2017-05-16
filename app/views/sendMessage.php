@@ -7,7 +7,7 @@
   </head>
   <body>
     <!-- Header -->
-    <?php require_once('layout/headerLogged.php'); ?>
+    <?php require_once('layout/headerMessages.php'); ?>
     <div class="container">
       <!-- Content -->
       <div class="jumbotron">

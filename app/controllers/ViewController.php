@@ -54,7 +54,8 @@
 
         $this->view("sendMessage", $this->entity, array(
             "users" => $users,
-            "groups" =>$groups
+            "groups" => $groups,
+            "logged" => $_GET['id']
         ));
       }
   }

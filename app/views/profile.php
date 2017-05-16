@@ -18,7 +18,7 @@
           <div class="btn-group">
             <a class="btn btn-primary" href="<?php echo $helper->url('user','receivedMessages') ?>&id=<?php echo $user->getId(); ?>" role="button">Bandeja de entrada</a>
             <a class="btn btn-primary" href="<?php echo $helper->url('user','sentMessages') ?>&id=<?php echo $user->getId(); ?>" role="button">Enviados</a>
-            <a class="btn btn-primary" href="<?php echo $helper->url('view','messageForm') ?>" role="button">Redactar Mensaje</a>
+            <a class="btn btn-primary" href="<?php echo $helper->url('view','messageForm') ?>&id=<?php echo $user->getId(); ?>" role="button">Redactar Mensaje</a>
           </div>
         <?php } ?>
       </div>
