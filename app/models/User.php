@@ -48,6 +48,16 @@
       }
 
       /**
+      * Gets users that are in the group that the user selected
+      */
+      public function getGroupReceivers($group){
+        $req = $this->db()->prepare("SELECT user FROM members WHERE chat_group = :id");
+        $req->execute(array('id' => $id));
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+      }
+
+      /**
       * Inserts user into members table
       */
       public function addToGroups($id, $age, $music){
@@ -85,7 +95,7 @@
       }
 
       /**
-      * Get messages sent by the user
+      * Get messages sent by the user.
       */
       public function getReceivedMessages($id){
         $req = $this->db()->prepare("SELECT * FROM messages WHERE receiver = :id");
@@ -93,6 +103,22 @@
         //Fetch messages as Message() objects
         $result = $req->fetchAll(PDO::FETCH_CLASS, "Message");
         return $result;
+      }
+
+      /**
+      * Creates a message with given attributes
+      */
+      public function createMessage($sender, $receiver, $subject, $text){
+        $message = new Message();
+        //Assign values to message attributes
+        //Message id is equal to the number of messages in the database
+        $message->setId(sizeof($message->getAll()));
+        $message->setSender($sender);
+        $message->setReceiver($receiver);
+        $message->setSubject($subject);
+        $message->setMtext($text);
+        $message->setMdate(date("Y-m-d H:i:s")); //Current date
+        $message->create();
       }
 
       /**

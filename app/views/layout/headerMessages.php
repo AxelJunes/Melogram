@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse navbar-general">
     <nav class="container-fluid navigation-menu">
         <div class="navbar-header">
             <a href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $logged; ?>"><img src="public/img/logos/melogram.png"></a>

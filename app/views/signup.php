@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <?php require_once('layout/library.php'); ?>
-    <link rel="stylesheet" href="public/css/signUp.css">
-    <title>Sign Up</title>
+    <link rel="stylesheet" href="public/css/login.css">
+    <title>Registro</title>
 </head>
   <body>
     <!-- Header -->

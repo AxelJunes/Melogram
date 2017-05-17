@@ -8,23 +8,35 @@
   <body>
     <?php require_once('layout/headerIndex.php'); ?>
     <div class="container">
-        <section>
-            <div class="jumbotron">
-                <div class="page-header">
-                  <h1>Bienvenido a melogram!!</h1>
-                </div>
-                <p>
-                  Melogram es una red social para "melómanos".
-                </p>
-                <p>
-                  Aquí podrás conocer a otros amantes de la música, y expandir tus gustos.
-                </p>
-                <p>
-                  También puedes pertenecer a grupos con gente a la que le guste la misma música que a ti.
-                </p>
-                <h2> Así que a qué estas esperando, regístrate!!</h2>
-            </div><!-- Jumbotron -->
-        </section>
+        <div class="jumbotron">
+          <!-- Slider here -->
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="public/img/resources/info1.png" class="img-responsive img-info">
+              <br>
+              <p class="text-home">
+                Melogram es una red social para "melómanos".
+              </p>
+              <br>
+            </div>
+            <div class="col-lg-4">
+              <img src="public/img/resources/info2.png" class="img-responsive img-info">
+              <br>
+              <p class="text-home">
+                Aquí podrás conocer a otros amantes de la música, y compartir tus gustos con ellos.
+              </p>
+              <br>
+            </div>
+            <div class="col-lg-4">
+              <img src="public/img/resources/info3.png" class="img-responsive img-info">
+              <br>
+              <p class="text-home">
+                También podrás pertenecer a grupos con gente a la que le guste la misma música que a ti.
+              </p>
+              <br>
+            </div>
+          </div>
+        </div><!-- Jumbotron -->
     </div>
     <?php require_once('layout/footer.php'); ?>
     <!-- Javascript -->

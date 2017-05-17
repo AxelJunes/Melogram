@@ -76,6 +76,14 @@
         return $result;
       }
 
+      /**
+      * Checks if the name is valid.
+      * The name is valid if it has no spaces
+      */
+      public function valid($id){
+        return strpos($id, ' ');
+      }
+
       //Getter and setter methods
 
       /**

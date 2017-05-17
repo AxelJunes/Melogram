@@ -119,7 +119,45 @@
       * Send message to other users
       */
       public function sendMessage(){
-        echo $_POST['receiver'];
+        $sender = $_GET['id'];
+        //We know the receiver exists, so we just have to check whether it
+        //is a group, a user or everyone.
+        $receiver = $_POST['receiver'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+
+        if (strpos($receiver, '(Grupo)')){
+          //If receiver is a group
+          $splits = explode(" ", $receiver);
+          //We know that what is left of the space is the name of the group,
+          //because of the precondition
+          $receiver = $splits[0];
+          //Get group receivers
+          $groups = $this->user->getGroupReceivers($receiver);
+          //Send to all users in group
+          foreach ($groups as $group) {
+            $userRec = $group["user"];
+            if($userRec != $sender){
+              $this->user->createMessage($sender, $userRec, $subject, $message);
+            }
+          }
+        }
+        else {
+          if($receiver == 'Todos'){
+            //If the receivers are all the users
+            $users = $this->user->getMessageReceivers();
+            //Send to all users
+            foreach ($users as $user){
+              if($user->getId() != $sender){
+                $this->user->createMessage($sender, $user->getId(), $subject, $message);
+              }
+            }
+          }
+          else{
+            //If the receiver is one user
+            $this->user->createMessage($sender, $receiver, $subject, $message);
+          }
+        }
       }
 
       /**

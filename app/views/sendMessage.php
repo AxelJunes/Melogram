@@ -11,16 +11,15 @@
     <div class="container">
       <!-- Content -->
       <div class="jumbotron">
-        <form action="<?php echo $helper->url('user','sendMessage'); ?>" method="POST">
+        <form action="<?php echo $helper->url('user','sendMessage');?>&id=<?php echo $logged; ?>" method="POST">
           <div class="input-group">
             <span class="input-group-addon">Para</span>
             <div class="form-group">
              <select class="form-control" name="receiver" required>
-               <option class="alert alert-info">Todos</option>
-               <option class="alert alert-info" disabled>Grupos</option>
-               <!-- Show groups registered in database -->
+               <option>Todos</option>
+               <!-- Show only groups which the user is a member of -->
                <?php foreach ($groups as $group) { ?>
-                     <option><?php print_r($group["chat_group"]); ?></option>
+                     <option><?php print_r($group["chat_group"]);?> (Grupo)</option>
                <?php } ?>
                <!-- Show users registered in database -->
                <?php foreach ($users as $user) { ?>
@@ -32,15 +31,16 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon">Asunto</span>
-            <input type="text" class="form-control" name="Asunto" required>
+            <input type="text" class="form-control" name="subject" required>
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon">Mensaje</span>
-            <textarea class="form-control message-text" name="Mensaje" required></textarea>
+            <textarea class="form-control message-text" name="message" required></textarea>
           </div>
           <br>
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Enviar</button>
+              <a class="btn btn-primary col-lg-2" href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $logged; ?>" role="button">Volver</a>
+          <button type="submit" class="btn btn-primary btn-lg col-md-offset-9 col-lg-offset-9" name="submit">Enviar</button>
         </form>
       </div><!-- Jumbotron -->
     </div><!-- Container -->

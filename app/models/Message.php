@@ -25,12 +25,20 @@ class Message extends EntityBase {
      */
      public function create() {
          $insert = $this->db()->prepare("INSERT INTO messages (id, sender, receiver, subject, m_text, m_date) VALUES (?, ?, ?, ?, ?, ?)");
-         $insert->bindParam(1, $this->getId(), PDO::PARAM_INT);
-         $insert->bindParam(2, $this->getSender(), PDO::PARAM_STR);
-         $insert->bindParam(3, $this->getReceiver(), PDO::PARAM_STR);
-         $insert->bindParam(4, $this->getSubject(), PDO::PARAM_STR);
-         $insert->bindParam(3, $this->getMtext(), PDO::PARAM_STR);
-         $insert->bindParam(4, $this->getMdate(), PDO::PARAM_STR);
+         //Variables to insert
+         $id = $this->getId();
+         $sender = $this->getSender();
+         $receiver = $this->getReceiver();
+         $subject = $this->getSubject();
+         $text = $this->getMtext();
+         $date = $this->getMdate();
+
+         $insert->bindParam(1, $id, PDO::PARAM_INT);
+         $insert->bindParam(2, $sender, PDO::PARAM_STR);
+         $insert->bindParam(3, $receiver, PDO::PARAM_STR);
+         $insert->bindParam(4, $subject, PDO::PARAM_STR);
+         $insert->bindParam(5, $text, PDO::PARAM_STR);
+         $insert->bindParam(6, $date, PDO::PARAM_STR);
          //Execute prepared statement
          $insert->execute();
      }

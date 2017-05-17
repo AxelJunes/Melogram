@@ -3,7 +3,7 @@
 <head>
     <?php require_once('layout/library.php'); ?>
     <link rel="stylesheet" href="public/css/login.css">
-    <title>Login</title>
+    <title>Inciar Sesión</title>
 </head>
   <body>
     <!-- Header -->
@@ -14,17 +14,17 @@
         <form action="<?php echo $helper->url('user','login'); ?>" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" class="form-control" name="id" placeholder="Nombre de usuario" required="required">
+            <input type="text" class="form-control" name="id" placeholder="Nombre de usuario" required>
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-            <input type="password" class="form-control" name="password" placeholder="Contraseña" required="required">
+            <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
           </div>
           <br>
           <button type="submit" class="btn btn-primary btn-lg entrar" name="submit">Entrar</button>
           <br><br>
-          <div class="link">Todavía no tienes cuenta?<a href="<?php echo $helper->url('genre','index'); ?>"> Registrate!</a></div>
+          <div class="link">Todavía no tienes cuenta?<a href="<?php echo $helper->url('view','signup'); ?>"> Regístrate!</a></div>
         </form>
       </div><!-- Jumbotron -->
     </div><!-- Container -->

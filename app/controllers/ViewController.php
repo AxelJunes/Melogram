@@ -20,6 +20,18 @@
           $this->view("admin", $this->entity, "");
       }
 
+      public function contact(){
+        $this->view("contact", "", "");
+      }
+
+      public function faq(){
+        $this->view("faq", "", "");
+      }
+
+      public function whoweare(){
+        $this->view("whoweare", "", "");
+      }
+
       public function login(){
         $this->view("login", $this->entity, "");
       }

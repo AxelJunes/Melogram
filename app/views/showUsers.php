@@ -16,6 +16,12 @@
                 <p class="text-success">Music preference: <?php echo $user->getMusic(); ?></p>
             </div>
         <?php } ?>
+        <?php foreach ($users as $user) { ?>
+            <h2>Grupo: <?php echo $user->getId(); ?></h2>
+            <p class="text-info">Género musical: <?php echo $user->getGenre(); ?></p>
+            <p class="text-info">Edad mínima: <?php echo $user->getMinAge(); ?></p>
+            <p class="text-info">Edad máxima: <?php echo $user->getMaxAge(); ?></p>
+        <?php } ?>
     </div>
 </section>
 <!-- Site footer -->

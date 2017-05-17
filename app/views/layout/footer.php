@@ -1,11 +1,11 @@
-<footer class="footer navbar navbar-inverse">
+<footer class="footer navbar navbar-inverse navbar-general">
   <div class="container">
     <ul>
-      <li class="footer-list" href="#">Contacto</li>
-      <li class="footer-list" href="#">Quiénes somos</li>
-      <li class="footer-list" href="#">Social</li>
+      <li class="footer-list"><a class="footer-link" href="<?php echo $helper->url('view','contact'); ?>">Contacto</a></li>
+      <li class="footer-list"><a class="footer-link" href="<?php echo $helper->url('view','faq'); ?>">FAQ</a></li>
+      <li class="footer-list"><a class="footer-link" href="<?php echo $helper->url('view','whoweare'); ?>">Quiénes somos</a></li>
     </ul>
     <br>
-    <p>&copy; Axel Junestrand 2017</p>
+    <p>Melogram &copy; - Axel Junestrand 2017</p>
   </div>
 </footer>
