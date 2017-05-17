@@ -1,4 +1,5 @@
 <div class="navbar navbar-inverse navbar-general">
+  <div class="container">
     <nav class="container-fluid navigation-menu">
         <div class="navbar-header">
           <a href="index.php"><img src="public/img/logos/melogram.png" class="img-responsive logo"></a>
@@ -8,4 +9,5 @@
           <li><a href="<?php echo $helper->url('view','login'); ?>"><span class="glyphicon glyphicon-log-in top-right-logo"></span>Inicia Sesión</a></li>
         </ul>
     </nav>
+  </div>
 </div>

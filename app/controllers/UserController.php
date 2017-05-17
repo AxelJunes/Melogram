@@ -158,6 +158,11 @@
             $this->user->createMessage($sender, $receiver, $subject, $message);
           }
         }
+        //Change view to profile
+        $users = $this->user->getById($this->user->getId());
+        $this->view("profile", "", array(
+            "users" => $users
+        ));
       }
 
       /**

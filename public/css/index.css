@@ -33,7 +33,7 @@ body{
 
 .navigation-menu{
   padding: 15px;
-  background-color: #202020;
+  background-color: #222;
 }
 .navbar-right ul li:hover{
   background-color: #202020;
@@ -79,4 +79,8 @@ body{
 
 .footer-link, .footer-link:hover{
   color: #e3e3e3;
+}
+
+.copyright-text{
+  text-align: center;
 }
