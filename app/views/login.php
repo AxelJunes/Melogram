@@ -3,7 +3,7 @@
 <head>
     <?php require_once('layout/library.php'); ?>
     <link rel="stylesheet" href="public/css/login.css">
-    <title>Inciar Sesión</title>
+    <title>Iniciar Sesión</title>
 </head>
   <body>
     <!-- Header -->
@@ -22,7 +22,7 @@
             <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
           </div>
           <br>
-          <button type="submit" class="btn btn-primary btn-lg entrar" name="submit">Entrar</button>
+          <button type="submit" class="btn btn-info btn-lg entrar" name="submit">Entrar</button>
           <br><br>
           <div class="link">Todavía no tienes cuenta?<a href="<?php echo $helper->url('view','signup'); ?>"> Regístrate!</a></div>
         </form>

@@ -39,9 +39,10 @@
             <textarea class="form-control message-text" name="message" required></textarea>
           </div>
           <br>
-              <a class="btn btn-primary col-lg-2" href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $logged; ?>" role="button">Volver</a>
-          <button type="submit" class="btn btn-primary btn-lg col-md-offset-9 col-lg-offset-9" name="submit">Enviar</button>
+              <a class="btn btn-danger col-lg-2" href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $logged; ?>" role="button">Volver</a>
+          <button type="submit" class="btn btn-info col-md-offset-9 col-lg-offset-8 col-lg-2" name="submit">Enviar</button>
         </form>
+        <br>
       </div><!-- Jumbotron -->
     </div><!-- Container -->
     <!-- Footer -->

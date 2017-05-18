@@ -16,26 +16,17 @@
       }
 
       /**
-       * Create user
+       * Create genre
        */
-      public function create() {
-          $key = "";
-          try {
-              if ($insert = $this->db()->prepare("INSERT INTO genres (id) VALUES (?)")) {
-                  $insert->bind_param('sssss', $this->id);
-                  if (!$insert->execute()) {
-                      $key = "901"; //Error code: "El registro no se ha podido crear correctamente"
-                  } else {
-                      $key = "100"; //Error code: "Registro creado correctamente"
-                  }
-              } else {
-                  $key = $this->db()->error; //Error code: "Error directo de base de datos"
-              }
-          } catch (Exception $e) {
-              header('Location: views/error.php?err=' . $e->getMessage() . "\n");
-          }
-          return $key;
-      }
+       public function create() {
+           $insert = $this->db()->prepare("INSERT INTO genres (id) VALUES (?)");
+           //Variables to insert
+           $id = $this->getId();
+
+           $insert->bindParam(1, $id, PDO::PARAM_STR);
+           //Execute prepared statement
+           $insert->execute();
+       }
 
       //Getter and setter methods
 

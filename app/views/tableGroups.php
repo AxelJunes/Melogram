@@ -32,7 +32,7 @@
         </table>
 
         <br>
-        <a class="btn btn-primary col-lg-2" href="<?php echo $helper->url('view','admin') ?>" role="button">Volver</a>
+        <a class="btn btn-danger col-lg-2" href="<?php echo $helper->url('view','admin') ?>" role="button">Volver</a>
         <br>
       </div>
     </div>

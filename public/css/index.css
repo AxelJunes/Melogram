@@ -84,3 +84,18 @@ body{
 .copyright-text{
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .btn-profile{
+    margin-left: 0;
+    width:100%;
+  }
+  .img-profile{
+    display: block;
+    margin: auto;
+    width: 50%;
+  }
+  .text-profile{
+    text-align: center;
+  }
+}

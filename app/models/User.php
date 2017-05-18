@@ -50,7 +50,7 @@
       /**
       * Gets users that are in the group that the user selected
       */
-      public function getGroupReceivers($group){
+      public function getGroupReceivers($id){
         $req = $this->db()->prepare("SELECT user FROM members WHERE chat_group = :id");
         $req->execute(array('id' => $id));
         $result = $req->fetchAll(PDO::FETCH_ASSOC);

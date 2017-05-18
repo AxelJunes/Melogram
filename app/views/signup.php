@@ -45,7 +45,7 @@
             <input type="password" class="form-control" name="pass2" placeholder="Repite la contraseña" required="required">
           </div>
           <br>
-          <button type="submit" class="btn btn-primary btn-lg entrar">Crear cuenta</button>
+          <button type="submit" class="btn btn-info btn-lg entrar">Crear cuenta</button>
           <br><br>
           <div class="link">Ya tienes cuenta?<a href="<?php echo $helper->url('view','login'); ?>"> Inicia Sesión!</a></div>
         </form>

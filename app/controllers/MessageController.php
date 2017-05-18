@@ -25,18 +25,10 @@
       * Show message by id
       */
       public function show() {
-          if (!isset($_GET['id'])) {
-              $this->view("error", "", array(
-                  "key" => "Código de Error",
-                  "desc" => "Descripción del Error"
-              ));
-          }
-          else{
-            $messages = $this->message->getById($_GET['id']);
-            $this->view("show", $this->entity, array(
-                "messages" => $messages
-            ));
-          }
+          $messages = $this->message->getById($_GET['id']);
+          $this->view("show", $this->entity, array(
+              "messages" => $messages
+          ));
       }
 
   }

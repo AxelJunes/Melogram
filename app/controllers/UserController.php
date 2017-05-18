@@ -123,26 +123,27 @@
         //We know the receiver exists, so we just have to check whether it
         //is a group, a user or everyone.
         $receiver = $_POST['receiver'];
-        $subject = $_POST['subject'];
         $message = $_POST['message'];
 
         if (strpos($receiver, '(Grupo)')){
           //If receiver is a group
-          $splits = explode(" ", $receiver);
+          $groupName = explode(" ", $receiver);
+          $subject = $_POST['subject'] . "(" . $groupName . ")";
           //We know that what is left of the space is the name of the group,
           //because of the precondition
-          $receiver = $splits[0];
+          $receiver = $groupName[0];
           //Get group receivers
           $groups = $this->user->getGroupReceivers($receiver);
           //Send to all users in group
           foreach ($groups as $group) {
-            $userRec = $group["user"];
+            $userRec = $group['user'];
             if($userRec != $sender){
               $this->user->createMessage($sender, $userRec, $subject, $message);
             }
           }
         }
         else {
+          $subject = $_POST['subject'];
           if($receiver == 'Todos'){
             //If the receivers are all the users
             $users = $this->user->getMessageReceivers();

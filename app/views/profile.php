@@ -10,18 +10,25 @@
     <!-- Content -->
     <div class="container">
       <div class="jumbotron">
-        <div class="btn-group">
-          <a class="btn btn-primary" href="<?php echo $helper->url('user','receivedMessages') ?>&id=<?php echo $user->getId(); ?>" role="button">Bandeja de entrada</a>
-          <a class="btn btn-primary" href="<?php echo $helper->url('user','sentMessages') ?>&id=<?php echo $user->getId(); ?>" role="button">Enviados</a>
-          <a class="btn btn-primary" href="<?php echo $helper->url('view','messageForm') ?>&id=<?php echo $user->getId(); ?>" role="button">Redactar Mensaje</a>
-        </div>
+        <div class="container">
         <?php foreach ($users as $user) { ?>
-          <h2>Perfil de: <?php echo $user->getId(); ?></h2>
-          <p class="text">Edad: <?php echo $user->getAge(); ?></p>
-          <p class="text">Música preferida: <?php echo $user->getMusic(); ?></p>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <h2 class="text-profile"><?php echo $user->getId(); ?></h2>
+            <br><br>
+            <a class="btn btn-info btn-profile col-sm-7 col-md-5 col-lg-4" href="<?php echo $helper->url('user','receivedMessages') ?>&id=<?php echo $user->getId(); ?>" role="button">Bandeja de entrada</a>
+            <br><br>
+            <a class="btn btn-info btn-profile col-sm-7 col-md-5 col-lg-4" href="<?php echo $helper->url('user','sentMessages') ?>&id=<?php echo $user->getId(); ?>" role="button">Enviados</a>
+            <br><br>
+            <a class="btn btn-info btn-profile col-sm-7 col-md-5 col-lg-4" href="<?php echo $helper->url('view','messageForm') ?>&id=<?php echo $user->getId(); ?>" role="button">Redactar Mensaje</a>
+          </div>
+          <br><br><br>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <img class="img-profile" src="public/img/resources/profile.png" class="img-responsive">
+          </div>
         <?php } ?>
-      </div>
-    </div>
+      </div><!-- Inner container -->
+    </div><!-- Jumbotron -->
+  </div><!-- Outer container -->
     <!-- Footer -->
     <?php require_once('layout/footer.php'); ?>
     <!-- Javascript -->

@@ -21,7 +21,7 @@ class Message extends EntityBase {
     }
 
     /**
-     * Create group
+     * Create message
      */
      public function create() {
          $insert = $this->db()->prepare("INSERT INTO messages (id, sender, receiver, subject, m_text, m_date) VALUES (?, ?, ?, ?, ?, ?)");

@@ -39,10 +39,11 @@
             <span class="input-group-addon"><span class="glyphicon glyphicon-alert"></span></span>
             <input type="number" min="0" class="form-control" name="maxAge" placeholder="Edad máxima" required="required">
           </div>
-          <br>
-          <a class="btn btn-primary col-lg-2" href="<?php echo $helper->url('view','admin') ?>" role="button">Volver</a>
-          <button type="submit" class="btn btn-primary col-lg-offset-8 col-lg-2" name="submit">Dar de alta</button>
+          <br><br>
+          <a class="btn btn-danger col-lg-2" href="<?php echo $helper->url('view','admin') ?>" role="button">Volver</a>
+          <button type="submit" class="btn btn-info col-lg-offset-8 col-lg-2" name="submit">Dar de alta</button>
         </form>
+        <br>
       </div><!-- Jumbotron -->
     </div><!-- Container -->
     <!-- Footer -->
