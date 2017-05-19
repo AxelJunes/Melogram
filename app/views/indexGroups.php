@@ -1,26 +1,24 @@
-
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <?php require_once('layout/library.php'); ?>
-    <title>Página de administrador</title>
+      <?php require_once('layout/library.php'); ?>
+      <title>Grupos</title>
   </head>
   <body>
-    <!-- Header -->
-    <?php require_once('layout/headerAdmin.php'); ?>
-    <!-- Content -->
+    <?php require_once('layout/headerIndex.php'); ?>
     <div class="container">
-      <div class="jumbotron">
-        <?php foreach ($groups as $group) { ?>
-            <h2><?php echo $group->getId(); ?></h2>
-            <p>
-                <a class="btn btn-primary" href="<?php echo $helper->url('group','show') ?>&id=<?php echo $group->getId(); ?>" role="button">Ver detalle</a>
-            </p>
-        <?php } ?>
-      </div>
+        <div class="jumbotron">
+          <h2>Grupos Registrados</h2>
+          <br>
+          <?php foreach ($groups as $group) { ?>
+            <h3><u><?php echo $group->getId(); ?></u></h3>
+            <h3>Género musical: <?php echo $group->getGenre(); ?></h3>
+            <h3>Edad mínima: <?php echo $group->getMinAge(); ?></h3>
+            <h3>Edad máxima: <?php echo $group->getMaxAge(); ?></h3>
+            <br>
+          <?php } ?>
+        </div><!-- Jumbotron -->
     </div>
-    <!-- Footer -->
     <?php require_once('layout/footer.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>

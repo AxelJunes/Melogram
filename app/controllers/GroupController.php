@@ -16,7 +16,7 @@
       }
 
       public function index() {
-          // Store group in arraypredpred
+          // Store group in array
           $groups = $this->group->getAll();
           $this->view("index", $this->entity, array(
               "groups" => $groups
@@ -24,7 +24,7 @@
       }
 
       /**
-      * Show groups in a table, for the admin to see
+      * Show groups in a table, for the admin view
       */
       public function table() {
           // Store group in array
@@ -36,10 +36,7 @@
 
       public function show() {
           if (!isset($_GET['id'])) {
-              $this->view("error", "", array(
-                  "key" => "Código de Error",
-                  "desc" => "Descripción del Error"
-              ));
+              $this->view("error", "", "");
           }
           else{
             $groups = $this->group->getById($_GET['id']);
@@ -51,6 +48,8 @@
 
       public function add(){
         $this->group->setId($_POST['id']);
+        $genre = new Genre();
+        $genres = $genre->getAll();
         //Validate name of the group
         if(!$this->group->valid($this->group->getId())){
           //Check if group doesn't already exist
@@ -68,17 +67,28 @@
               $this->group->getMinAge(),
               $this->group->getMaxAge()
             );
+            $message = "Grupo dado de alta correctamente";
             //Redirect to admin page
-            $this->view("admin", "", "");
+            $this->view("admin", "", array(
+                "message" => $message
+            ));
           }
           else{
             //User already registered in database
-            echo "Group already exists!";
+            $message = "Ese nombre de grupo ya existe!";
+            $this->view("add", "Groups", array(
+                "genres" => $genres,
+                "message" => $message
+            ));
           }
         }
         else{
           //Group name is not valid
-          echo "Group name is not valid!";
+          $message = "El nombre del grupo no puede contener espacios!";
+          $this->view("add", "Groups", array(
+              "genres" => $genres,
+              "message" => $message
+          ));
         }
       }
   }

@@ -37,7 +37,7 @@
       </div>
     </div>
     <!-- Footer -->
-    <?php require_once('layout/footer.php'); ?>
+    <?php require_once('layout/footerLogged.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>
   </body>

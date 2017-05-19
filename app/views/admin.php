@@ -11,6 +11,11 @@
     <div class="container">
       <div class="jumbotron">
         <div class="container">
+          <?php if(isset($message)){ ?>
+              <div class="alert alert-success">
+                <strong><?php echo $message ?></strong>
+              </div>
+          <?php } ?>
           <div class="col-sm-6 col-md-6 col-lg-6">
             <h2 class="text-profile">Página de administrador</h2>
             <br><br>

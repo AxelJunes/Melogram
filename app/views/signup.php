@@ -9,17 +9,22 @@
     <!-- Header -->
     <?php require_once('layout/headerIndex.php'); ?>
     <div class="container">
+      <?php if(isset($message)){ ?>
+          <div class="alert alert-danger">
+            <strong><?php echo $message ?></strong>
+          </div>
+      <?php } ?>
       <!-- Content -->
       <div class="jumbotron col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 login">
         <form action="<?php echo $helper->url('user','signup'); ?>" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" class="form-control" name="id" placeholder="Nombre de usuario" required="required">
+            <input type="text" class="form-control" name="id" placeholder="Nombre de usuario" required autofocus>
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-alert"></span></span>
-            <input type="number" min="0" class="form-control" name="age" placeholder="Edad" required="required">
+            <input type="number" min="0" class="form-control" name="age" placeholder="Edad" required>
           </div>
           <br>
           <div class="input-group">
@@ -37,12 +42,12 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-            <input type="password" class="form-control" name="pass1" placeholder="Contraseña" required="required">
+            <input type="password" class="form-control" name="pass1" placeholder="Contraseña" required>
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-            <input type="password" class="form-control" name="pass2" placeholder="Repite la contraseña" required="required">
+            <input type="password" class="form-control" name="pass2" placeholder="Repite la contraseña" required>
           </div>
           <br>
           <button type="submit" class="btn btn-info btn-lg entrar">Crear cuenta</button>

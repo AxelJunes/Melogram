@@ -13,7 +13,20 @@
       }
 
       public function home() {
-          $this->view("home", $this->entity, "");
+          if(isset($_GET['contact'])){
+            if($_GET['contact'] == 'yes'){
+              $info = "Mensaje enviado correctamente! Gracias por contactar con nosotros";
+            }
+            else {
+              $info = "";
+            }
+          }
+          else {
+            $info = "";
+          }
+          $this->view("home", $this->entity, array(
+              "info" => $info
+          ));
       }
 
       public function admin() {

@@ -38,7 +38,7 @@
       </div><!-- Jumbotron -->
     </div><!-- Container -->
     <!-- Footer -->
-    <?php require_once('layout/footer.php'); ?>
+    <?php require_once('layout/footerLogged.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>
     <script src="public/js/clickRow.js"></script>

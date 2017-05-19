@@ -1,3 +1,10 @@
 .message-text{
   resize: vertical;
 }
+
+.contact-field{
+  width: 100%;
+}
+.form-addon{
+  width: 80px;
+}

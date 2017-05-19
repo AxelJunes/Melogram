@@ -5,7 +5,7 @@
         <a class="footer-link" href="<?php echo $helper->url('view','contact'); ?>">Contacto</a>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-home">
-        <a class="footer-link" href="<?php echo $helper->url('view','faq'); ?>">FAQ</a>
+        <a class="footer-link" href="<?php echo $helper->url('view','faq'); ?>">Preguntas frecuentes</a>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-home">
         <a class="footer-link" href="<?php echo $helper->url('view','whoweare'); ?>">Quiénes somos</a>

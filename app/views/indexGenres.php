@@ -2,18 +2,19 @@
 <html lang="es">
   <head>
       <?php require_once('layout/library.php'); ?>
-      <title>Quiénes somos</title>
+      <title>Géneros musicales</title>
   </head>
-
   <body>
     <?php require_once('layout/headerIndex.php'); ?>
     <div class="container">
         <div class="jumbotron">
-          <h3>Melogram &copy; es una red social para melómanos creada por Axel Junestrand para la asignatura de
-          Ampliación de Bases de Datos.</h3>
+          <h2>Géneros musicales</h2>
+          <br>
+          <?php foreach ($genres as $genre) { ?>
+            <h4><?php echo $genre->getId(); ?></h4>
+          <?php } ?>
         </div><!-- Jumbotron -->
-    </div><!-- Container -->
-    <!-- Footer -->
+    </div>
     <?php require_once('layout/footer.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>

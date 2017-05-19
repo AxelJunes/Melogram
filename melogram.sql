@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2017 a las 00:42:58
+-- Tiempo de generación: 19-05-2017 a las 21:37:29
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -66,12 +66,11 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `genre`, `min_age`, `max_age`) VALUES
-('Guays', 'Pop', 25, 55),
-('Los Hijos del Metal', 'Metal', 15, 60),
 ('LosRockeros', 'Rock', 30, 55),
 ('MC\'s', 'HipHop', 20, 30),
 ('Metaleros', 'Metal', 21, 36),
-('Monderos', 'Techno', 20, 25);
+('Monderos', 'Techno', 20, 25),
+('ZionLion', 'Reggae', 18, 50);
 
 -- --------------------------------------------------------
 
@@ -89,13 +88,9 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`user`, `chat_group`) VALUES
-('gabri', 'Los Hijos del Metal'),
 ('gabri', 'Metaleros'),
-('Eduardo', 'MC\'s'),
 ('axel', 'Monderos'),
-('stefan', 'LosRockeros'),
-('guille', 'Guays'),
-('ines', 'Guays');
+('pepe', 'ZionLion');
 
 -- --------------------------------------------------------
 
@@ -117,16 +112,10 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `sender`, `receiver`, `subject`, `m_text`, `m_date`) VALUES
-(0, 'axel', 'gabri', 'Bienvenido', 'Hola tio, bienvenido a melogram.\r\nUn saludo.', '2017-05-17'),
-(1, 'gabri', 'axel', 'Re: Bienvenido', 'Muchas gracias! Espero verte pronto.\r\nUn abrazo.', '2017-05-17'),
-(2, 'axel', 'guille', 'Concierto', 'Que pasa guille, vas al concierto de Metallica el viernes?', '2017-05-17'),
-(3, 'stefan', 'axel', 'Hola', 'Quiero tocar en tu grupo.', '2017-05-17'),
-(4, 'axel', 'stefan', 'Re: Hola', 'Vale, necesito un guitarrista.', '2017-05-17'),
-(5, 'ines', 'axel', 'Difundido', 'Hola, este es mi primer mensaje difundido!!', '2017-05-17'),
-(6, 'ines', 'Eduardo', 'Difundido', 'Hola, este es mi primer mensaje difundido!!', '2017-05-17'),
-(7, 'ines', 'gabri', 'Difundido', 'Hola, este es mi primer mensaje difundido!!', '2017-05-17'),
-(8, 'ines', 'guille', 'Difundido', 'Hola, este es mi primer mensaje difundido!!', '2017-05-17'),
-(9, 'ines', 'stefan', 'Difundido', 'Hola, este es mi primer mensaje difundido!!', '2017-05-17');
+(0, 'axel', 'gabri', 'Difundido', 'Hola, estoy probando los mensajes difundidos.', '2017-05-19'),
+(1, 'axel', 'gabri', 'Concierto', 'Hola gabri, vas al concierto de Metallica la semana que viene? Un saludo.', '2017-05-19'),
+(2, 'gabri', 'axel', 'Re: Concierto', 'No tio, voy al concierto de Iron Maiden al final.', '2017-05-19'),
+(3, 'ines', 'axel', 'hola', 'te gusta el jazz?', '2017-05-19');
 
 -- --------------------------------------------------------
 
@@ -148,11 +137,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `password`, `age`, `music`) VALUES
 ('admin', 'admin', NULL, NULL),
 ('axel', 'axel', 22, 'Techno'),
-('Eduardo', '1234', 25, 'HipHop'),
 ('gabri', 'gabri', 22, 'Metal'),
-('guille', '1234', 30, 'Pop'),
-('ines', 'ines', 49, 'Pop'),
-('stefan', 'stefan', 50, 'Rock');
+('ines', '1234', 49, 'Jazz'),
+('pepe', '1234', 31, 'Reggae');
 
 --
 -- Índices para tablas volcadas

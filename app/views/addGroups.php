@@ -9,12 +9,17 @@
     <!-- Header -->
     <?php require_once('layout/headerAdmin.php'); ?>
     <div class="container">
+      <?php if(isset($message)){ ?>
+          <div class="alert alert-danger">
+            <strong><?php echo $message ?></strong>
+          </div>
+      <?php } ?>
       <!-- Content -->
       <div class="jumbotron">
         <form action="<?php echo $helper->url('group','add'); ?>" method="POST">
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" class="form-control" name="id" placeholder="Nombre del grupo" required="required">
+            <input type="text" class="form-control" name="id" placeholder="Nombre del grupo" required autofocus>
           </div>
           <br>
           <div class="input-group">
@@ -32,12 +37,12 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-alert"></span></span>
-            <input type="number" min="0" class="form-control" name="minAge" placeholder="Edad mínima" required="required">
+            <input type="number" min="0" class="form-control" name="minAge" placeholder="Edad mínima" required>
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-alert"></span></span>
-            <input type="number" min="0" class="form-control" name="maxAge" placeholder="Edad máxima" required="required">
+            <input type="number" min="0" class="form-control" name="maxAge" placeholder="Edad máxima" required>
           </div>
           <br><br>
           <a class="btn btn-danger col-lg-2" href="<?php echo $helper->url('view','admin') ?>" role="button">Volver</a>
@@ -47,7 +52,7 @@
       </div><!-- Jumbotron -->
     </div><!-- Container -->
     <!-- Footer -->
-    <?php require_once('layout/footer.php'); ?>
+    <?php require_once('layout/footerLogged.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>
   </body>

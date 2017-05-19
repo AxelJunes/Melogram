@@ -1,4 +1,6 @@
 <?php
+  require_once(BASE_PATH . '/app/models/EntityBase.php');
+  require_once(BASE_PATH . '/app/models/Genre.php');
 
   class UserController extends BaseController{
 
@@ -73,12 +75,18 @@
           }
           else {
             //Password doesn't match
-            $this->view("login", "", "");
+            $message = "Nombre de usuario o contraseña incorrectos!";
+            $this->view("login", "", array(
+                "message" => $message
+            ));
           }
         }
         else{
           //User doesn't exist
-          $this->view("login", "", "");
+          $message = "Nombre de usuario o contraseña incorrectos!";
+          $this->view("login", "", array(
+              "message" => $message
+          ));
         }
       }
 
@@ -87,6 +95,8 @@
       */
       public function signup(){
         $this->user->setId($_POST['id']);
+        $genre = new Genre();
+        $genres = $genre->getAll();
         //Check if user doesn't already exist
         if(!$this->user->exists()){
           //Check if passwords match
@@ -106,12 +116,20 @@
           }
           else{
             //Passwords don't match
-            echo "Passwords don't match!";
+            $message = "Las contraseñas no son iguales!";
+            $this->view("signup", "", array(
+                "genres" => $genres,
+                "message" => $message
+            ));
           }
         }
         else{
           //User already registered in database
-          echo "User already exists!";
+          $message = "Ese nombre de usuario ya existe!";
+          $this->view("signup", "", array(
+              "genres" => $genres,
+              "message" => $message
+          ));
         }
       }
 
@@ -160,9 +178,11 @@
           }
         }
         //Change view to profile
-        $users = $this->user->getById($this->user->getId());
+        $users = $this->user->getById($sender);
+        $message = "Mensaje enviado correctamente!";
         $this->view("profile", "", array(
-            "users" => $users
+            "users" => $users,
+            "message" => $message
         ));
       }
 

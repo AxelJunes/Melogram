@@ -11,6 +11,13 @@
     <div class="container">
       <div class="jumbotron">
         <div class="container">
+        <?php if(isset($message)){ ?>
+          <?php if($message != ""){ ?>
+            <div class="alert alert-success">
+              <strong><?php echo $message; ?></strong>
+            </div>
+          <?php } ?>
+        <?php } ?>
         <?php foreach ($users as $user) { ?>
           <div class="col-sm-6 col-md-6 col-lg-6">
             <h2 class="text-profile"><?php echo $user->getId(); ?></h2>
@@ -30,7 +37,7 @@
     </div><!-- Jumbotron -->
   </div><!-- Outer container -->
     <!-- Footer -->
-    <?php require_once('layout/footer.php'); ?>
+    <?php require_once('layout/footerLogged.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>
   </body>

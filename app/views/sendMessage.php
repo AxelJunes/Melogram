@@ -12,8 +12,8 @@
       <!-- Content -->
       <div class="jumbotron">
         <form action="<?php echo $helper->url('user','sendMessage');?>&id=<?php echo $logged; ?>" method="POST">
-          <div class="input-group">
-            <span class="input-group-addon">Para</span>
+          <div class="input-group contact-field">
+            <span class="input-group-addon form-addon">Para</span>
             <div class="form-group">
              <select class="form-control" name="receiver" required>
                <option>Todos</option>
@@ -29,13 +29,13 @@
            </div>
           </div>
           <br>
-          <div class="input-group">
-            <span class="input-group-addon">Asunto</span>
+          <div class="input-group contact-field">
+            <span class="input-group-addon form-addon">Asunto</span>
             <input type="text" class="form-control" name="subject" required>
           </div>
           <br>
-          <div class="input-group">
-            <span class="input-group-addon">Mensaje</span>
+          <div class="input-group contact-field">
+            <span class="input-group-addon form-addon">Mensaje</span>
             <textarea class="form-control message-text" name="message" required></textarea>
           </div>
           <br>
@@ -46,7 +46,7 @@
       </div><!-- Jumbotron -->
     </div><!-- Container -->
     <!-- Footer -->
-    <?php require_once('layout/footer.php'); ?>
+    <?php require_once('layout/footerLogged.php'); ?>
     <!-- Javascript -->
     <?php require_once('layout/scripts.php'); ?>
   </body>
