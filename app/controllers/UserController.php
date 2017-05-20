@@ -146,7 +146,7 @@
         if (strpos($receiver, '(Grupo)')){
           //If receiver is a group
           $groupName = explode(" ", $receiver);
-          $subject = $_POST['subject'] . "(" . $groupName . ")";
+          $subject = $_POST['subject'] . " (" . $groupName[0] . ")";
           //We know that what is left of the space is the name of the group,
           //because of the precondition
           $receiver = $groupName[0];
