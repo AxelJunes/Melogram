@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-05-2017 a las 21:37:29
+-- Tiempo de generación: 23-05-2017 a las 00:04:43
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -90,7 +90,8 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`user`, `chat_group`) VALUES
 ('gabri', 'Metaleros'),
 ('axel', 'Monderos'),
-('pepe', 'ZionLion');
+('pepe', 'ZionLion'),
+('martins', 'Monderos');
 
 -- --------------------------------------------------------
 
@@ -112,10 +113,30 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `sender`, `receiver`, `subject`, `m_text`, `m_date`) VALUES
-(0, 'axel', 'gabri', 'Difundido', 'Hola, estoy probando los mensajes difundidos.', '2017-05-19'),
-(1, 'axel', 'gabri', 'Concierto', 'Hola gabri, vas al concierto de Metallica la semana que viene? Un saludo.', '2017-05-19'),
-(2, 'gabri', 'axel', 'Re: Concierto', 'No tio, voy al concierto de Iron Maiden al final.', '2017-05-19'),
-(3, 'ines', 'axel', 'hola', 'te gusta el jazz?', '2017-05-19');
+(1, 'diego', 'axel', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(2, 'diego', 'charly', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(3, 'diego', 'chavi', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(4, 'diego', 'gabri', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(5, 'diego', 'ines', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(6, 'diego', 'martins', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(7, 'diego', 'pepe', 'Hola chavales', 'Buenaaas, me acabo de hacer cuenta en Melogram, y mola demasiado!!!', '2017-05-22'),
+(8, 'axel', 'diego', 'Bienvenido', 'Hola Diego, bienvenido a Melogram! ', '2017-05-22'),
+(9, 'ines', 'axel', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(10, 'ines', 'charly', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(11, 'ines', 'chavi', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(12, 'ines', 'diego', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(13, 'ines', 'gabri', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(14, 'ines', 'martins', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(15, 'ines', 'pepe', 'Jazz', 'Me encanta el Jazz!', '2017-05-22'),
+(16, 'martins', 'axel', 'Mondo Jueves (Monderos)', 'Hola chicos, alguien va a Mondo este jueves?? Pincha Solomun!', '2017-05-22'),
+(17, 'axel', 'martins', 'Re: Mondo Jueves (Monderos)', 'Yo voy macho, habra que pillar entradas que se va a llenar.', '2017-05-22'),
+(25, 'chavi', 'axel', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22'),
+(26, 'chavi', 'charly', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22'),
+(27, 'chavi', 'diego', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22'),
+(28, 'chavi', 'gabri', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22'),
+(29, 'chavi', 'ines', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22'),
+(30, 'chavi', 'martins', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22'),
+(31, 'chavi', 'pepe', 'Country', 'La mejor musica es el country y lo sabeis!', '2017-05-22');
 
 -- --------------------------------------------------------
 
@@ -137,8 +158,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `password`, `age`, `music`) VALUES
 ('admin', 'admin', NULL, NULL),
 ('axel', 'axel', 22, 'Techno'),
+('charly', 'charly', 23, 'House'),
+('chavi', 'chavi', 23, 'Country'),
+('diego', 'diego', 23, 'Rock'),
 ('gabri', 'gabri', 22, 'Metal'),
 ('ines', '1234', 49, 'Jazz'),
+('martins', 'martins', 22, 'Techno'),
 ('pepe', '1234', 31, 'Reggae');
 
 --
@@ -180,6 +205,15 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `music` (`music`);
 
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- Restricciones para tablas volcadas
 --

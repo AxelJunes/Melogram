@@ -5,7 +5,7 @@
             <a href="<?php echo $helper->url('user','profile') ?>&id=<?php echo $logged; ?>"><img src="public/img/logos/melogram.png" class="img-responsive logo"></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="index.php"><span class="glyphicon glyphicon-log-out top-right-logo"></span>Cerrar Sesión</a></li>
+          <li><a href="<?php echo $helper->url('user','signout'); ?>"><span class="glyphicon glyphicon-log-out top-right-logo"></span>Cerrar Sesión</a></li>
         </ul>
     </nav>
   </div>

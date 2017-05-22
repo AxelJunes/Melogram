@@ -30,7 +30,16 @@
       }
 
       public function admin() {
+        session_start();
+        if (!(isset($_SESSION["username"]) && isset($_SESSION["password"]))) {
+            $this->view("error", "", array(
+                "key" => "403",
+                "desc" => "Acceso prohibido"
+            ));
+        }
+        else{
           $this->view("admin", $this->entity, "");
+        }
       }
 
       public function contact(){
@@ -59,28 +68,46 @@
       }
 
       public function groupForm(){
-        //Create a new Genre model to be able to display a dropdown in signup
-        $genre = new Genre();
-        $genres = $genre->getAll();
-        $this->view("addGroups", $this->entity, array(
-            "genres" => $genres
-        ));
+        session_start();
+        if (!(isset($_SESSION["username"]) && isset($_SESSION["password"]))) {
+            $this->view("error", "", array(
+                "key" => "403",
+                "desc" => "Acceso prohibido"
+            ));
+        }
+        else{
+          //Create a new Genre model to be able to display a dropdown in signup
+          $genre = new Genre();
+          $genres = $genre->getAll();
+          $this->view("addGroups", $this->entity, array(
+              "genres" => $genres
+          ));
+        }
       }
 
       public function messageForm(){
-        //User model to get all users from database
-        $user = new User();
-        //Array with all the registered users
-        $users = $user->getMessageReceivers();
-        //Group model to get all the senders groups
-        $group = new Group();
-        //Array with all the registered groups
-        $groups = $group->getMessageGroups($_GET['id']);
-        $this->view("sendMessage", $this->entity, array(
-            "users" => $users,
-            "groups" => $groups,
-            "logged" => $_GET['id']
-        ));
+        session_start();
+        if (!(isset($_SESSION["username"]) && isset($_SESSION["password"]))) {
+            $this->view("error", "", array(
+                "key" => "403",
+                "desc" => "Acceso prohibido"
+            ));
+        }
+        else{
+          //User model to get all users from database
+          $user = new User();
+          //Array with all the registered users
+          $users = $user->getMessageReceivers();
+          //Group model to get all the senders groups
+          $group = new Group();
+          //Array with all the registered groups
+          $groups = $group->getMessageGroups($_GET['id']);
+          $this->view("sendMessage", $this->entity, array(
+              "users" => $users,
+              "groups" => $groups,
+              "logged" => $_GET['id']
+          ));
+        }
       }
   }
 ?>
