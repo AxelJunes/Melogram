@@ -52,6 +52,7 @@
       * Log into application
       */
       public function login(){
+        session_start();
         $this->user->setId($_POST['id']);
         //Check if user exists
         if($this->user->exists()){
@@ -59,6 +60,8 @@
           //Compare database users password with submitted password
           $users = $this->user->getById($this->user->getId());
           if($users[0]->getPassword() == $this->user->getPassword()){
+            $_SESSION["username"] = $_POST['id'];
+            $_SESSION["password"] = $_POST['password'];
             //If the passwords match
             if($this->user->getId() == 'admin'){
               //If administrator
@@ -94,6 +97,7 @@
       * Sign Up for application
       */
       public function signup(){
+        session_start();
         $this->user->setId($_POST['id']);
         $genre = new Genre();
         $genres = $genre->getAll();
@@ -102,6 +106,9 @@
           //Check if passwords match
           if($_POST['pass1'] == $_POST['pass2']){
             //Passwords match
+            $_SESSION["username"] = $_POST['id'];
+            $_SESSION["password"] = $_POST['password'];
+            //Set user values
             $this->user->setPassword($_POST['pass1']);
             $this->user->setAge($_POST['age']);
             $this->user->setMusic($_POST['music']);
@@ -179,6 +186,7 @@
         }
         //Change view to profile
         $users = $this->user->getById($sender);
+
         $message = "Mensaje enviado correctamente!";
         $this->view("profile", "", array(
             "users" => $users,

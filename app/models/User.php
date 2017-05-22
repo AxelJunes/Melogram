@@ -111,8 +111,7 @@
       public function createMessage($sender, $receiver, $subject, $text){
         $message = new Message();
         //Assign values to message attributes
-        //Message id is equal to the number of messages in the database
-        $message->setId(sizeof($message->getAll()));
+        //Message id is set to AUTO_INCREMENT value in database
         $message->setSender($sender);
         $message->setReceiver($receiver);
         $message->setSubject($subject);
