@@ -10,7 +10,8 @@
     <?php require_once('layout/headerAdmin.php'); ?>
     <div class="container">
       <?php if(isset($message)){ ?>
-          <div class="alert alert-danger">
+          <div class='alert alert-danger alert-dismissable' data-dismiss='alert'>
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
             <strong><?php echo $message ?></strong>
           </div>
       <?php } ?>

@@ -12,9 +12,10 @@
       <div class="jumbotron">
         <div class="container">
           <?php if(isset($message)){ ?>
-              <div class="alert alert-success">
-                <strong><?php echo $message ?></strong>
-              </div>
+            <div class='alert alert-success alert-dismissable' data-dismiss='alert'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong><?php echo $message ?></strong>
+            </div>
           <?php } ?>
           <div class="col-sm-6 col-md-6 col-lg-6">
             <h2 class="text-profile">Página de administrador</h2>

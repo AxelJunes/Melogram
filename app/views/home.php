@@ -9,7 +9,8 @@
     <div class="container">
         <div class="jumbotron">
           <?php if($info != ""){ ?>
-            <div class="alert alert-success">
+            <div class='alert alert-success alert-dismissable' data-dismiss='alert'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
               <strong><?php echo $info; ?></strong>
             </div>
           <?php } ?>

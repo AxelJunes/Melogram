@@ -13,7 +13,8 @@
         <div class="container">
         <?php if(isset($message)){ ?>
           <?php if($message != ""){ ?>
-            <div class="alert alert-success">
+            <div class='alert alert-success alert-dismissable' data-dismiss='alert'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
               <strong><?php echo $message; ?></strong>
             </div>
           <?php } ?>
